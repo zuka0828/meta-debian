@@ -15,8 +15,6 @@ ARG USER_PASSWORD=deby
 ARG UID=1000
 ARG GID=1000
 
-ARG TEMPLATECONF=meta-debian/conf
-
 # Set locale required by bitbake
 RUN apt-get update && apt-get install -y locales && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
@@ -33,3 +31,5 @@ RUN useradd -m -u ${UID} ${USER_NAME} && \
 
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}/poky
+
+env TEMPLATECONF=meta-debian/conf
